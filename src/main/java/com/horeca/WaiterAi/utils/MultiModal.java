@@ -1,19 +1,12 @@
-package com.horeca.WaiterAi;
+package com.horeca.WaiterAi.utils;
 
 import com.google.cloud.vertexai.VertexAI;
-import com.google.cloud.vertexai.api.Blob;
-import com.google.cloud.vertexai.api.Content;
-import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.api.GenerationConfig;
 import com.google.cloud.vertexai.api.HarmCategory;
-import com.google.cloud.vertexai.api.Part;
 import com.google.cloud.vertexai.api.SafetySetting;
 import com.google.cloud.vertexai.generativeai.*;
-import com.google.protobuf.ByteString;
-import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

@@ -2,6 +2,7 @@ package com.horeca.WaiterAi.controller;
 
 
 import com.horeca.WaiterAi.api.WaiterControllerApi;
+import com.horeca.WaiterAi.domain.Order;
 import com.horeca.WaiterAi.dtos.ApiResponse;
 import com.horeca.WaiterAi.service.SpeechToTextService;
 import com.horeca.WaiterAi.service.WaiterSevice;
@@ -25,8 +26,14 @@ public class WaiterController implements WaiterControllerApi {
 
     @PostMapping("/takeOrder")
     public ApiResponse takeOrder(@RequestParam("audioFile") MultipartFile audioFile) {
-        return new ApiResponse(true, LocalDateTime.now().toString(),
-                "Take order successfully", waiterSevice.getOrder(audioFile));
+        Order order = waiterSevice.getOrder(audioFile);
+        if (order != null) {
+            return new ApiResponse(true, LocalDateTime.now().toString(),
+                    "Order taken successfully: " + order.toString(), order);
+        } else {
+            return new ApiResponse(false, LocalDateTime.now().toString(),
+                    "Failed to take order from audio file", null);
+        }
     }
 
 
