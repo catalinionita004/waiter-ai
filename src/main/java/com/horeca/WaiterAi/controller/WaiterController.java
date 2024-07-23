@@ -29,7 +29,7 @@ public class WaiterController implements WaiterControllerApi {
         Order order = waiterSevice.getOrder(audioFile);
         if (order != null) {
             return new ApiResponse(true, LocalDateTime.now().toString(),
-                    "Order taken successfully: " + order.toString(), order);
+                    "Order taken successfully", order);
         } else {
             return new ApiResponse(false, LocalDateTime.now().toString(),
                     "Failed to take order from audio file", null);
